@@ -16,14 +16,17 @@ const checkCarId = async (req, res, next) => {
 
 const checkCarPayload = (req, res, next) => {
   // checkCarPayload returns a status 400 with a { message: "<field name> is missing" } if any required field is missing.
+ next()
 }
 
 const checkVinNumberValid = (req, res, next) => {
   //checkVinNumberValid returns a status 400 with a { message: "vin <vin number> is invalid" } if the vin number is invalid.
+ next()
 }
 
 const checkVinNumberUnique = (req, res, next) => {
   // checkVinNumberUnique returns a status 400 with a { message: "vin <vin number> already exists" } if the vin number already exists in the database.
+ next()
 }
 
 module.exports = {

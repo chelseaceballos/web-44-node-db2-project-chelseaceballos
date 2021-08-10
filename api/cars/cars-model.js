@@ -8,8 +8,8 @@ const getById = async (id) => {
   return db('cars').where('id', id).first()
 }
 
-const create = () => {
-  // create resolves to the newly created car record
+const create = (car) => {
+ 
 }
 
 
