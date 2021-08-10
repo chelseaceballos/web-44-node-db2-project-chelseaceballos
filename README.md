@@ -28,6 +28,7 @@ The critical information for each car is the vin, make, model, and mileage. They
 | title        | string           | optional                                            |
 | transmission | string           | optional                                            |
 
+Changed Data type on mileage to integer , tbl.numeric isn't a function
 #### Write Model Functions
 
 - Write the following db access functions inside `api/cars/cars-model.js` using Knex:

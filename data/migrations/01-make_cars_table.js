@@ -1,11 +1,10 @@
 exports.up = function (knex) {
-  return knex.schema.table('cars', tbl => {
+  return knex.schema.createTable('cars', tbl => {
     tbl.increments()
-
-    tbl.string('vin', 17).unique().notNullable()   
+    tbl.string('vin', 17).notNullable().unique()  
     tbl.string('make', 128).notNullable()
     tbl.string('model', 128).notNullable()
-    tbl.numeric('mileage').unsigned().notNullable() // cannot be negative number
+    tbl.integer('mileage').unsigned().notNullable() // .unsigned() = cannot be negative number
     tbl.string('title', 128)
     tbl.string('transmission', 128)
   })

@@ -18,7 +18,7 @@ const cars = [
     {
         vin: '77888777',
         make: 'Nissan',
-        model: "Frontier",
+        model: "Maxima",
         mileage: 22000,
     },
 ]
