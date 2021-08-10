@@ -28,8 +28,12 @@ checkCarPayload,
 checkVinNumberValid,
 checkVinNumberUnique,
  async (req, res, next) =>{
-// [POST] /api/cars returns the created car.
-res.json('posts new car')
+try{
+ const car = await Car.create(req.body)
+    res.json(car)
+} catch (err) {
+    next(err)
+}
 })
 
 

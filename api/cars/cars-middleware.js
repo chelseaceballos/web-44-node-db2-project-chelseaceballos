@@ -1,4 +1,5 @@
 const Car = require('./cars-model');
+const vin = require('vin-validator')
 
 const checkCarId = async (req, res, next) => {
   try{
@@ -13,20 +14,53 @@ const checkCarId = async (req, res, next) => {
     next(err)
 }
 }
-
+ // vin make model mileage
 const checkCarPayload = (req, res, next) => {
   // checkCarPayload returns a status 400 with a { message: "<field name> is missing" } if any required field is missing.
- next()
-}
+  if (!req.body.vin) return next({
+    status: 400,
+    message: "vin is missing",
+  }) 
+  if (!req.body.make) return next({
+    status: 400,
+    message: "make is missing",
+  })
+  if (!req.body.model) return next({
+    status: 400,
+    message: "model is missing",
+  })
+  if (!req.body.mileage) return next({
+    status: 400,
+    message: "mileage is missing",
+  })
+  next()
+} 
 
 const checkVinNumberValid = (req, res, next) => {
-  //checkVinNumberValid returns a status 400 with a { message: "vin <vin number> is invalid" } if the vin number is invalid.
+  if (vin.validate(req.body.vin)) {
+    next()
+  } else {
+    next({ 
+      status: 400, 
+      message: `vin ${req.body.vin} is invalid`})
+  }
  next()
 }
 
-const checkVinNumberUnique = (req, res, next) => {
+const checkVinNumberUnique = async (req, res, next) => {
   // checkVinNumberUnique returns a status 400 with a { message: "vin <vin number> already exists" } if the vin number already exists in the database.
- next()
+ try{
+    const existing = await Car.getByVin(req.body.vin)
+    if(!existing) {
+      next()
+    } else {
+      next({ 
+        status: 400 , 
+        message: `vin ${req.body.vin} already exists`})
+    }
+ } catch (err) {
+   next(err)
+ }
 }
 
 module.exports = {

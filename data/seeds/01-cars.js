@@ -1,22 +1,22 @@
 const cars = [
-    {
-        vin: '12345678',
+    {        
+        vin: 'JH4DC4440RS004255',
         make: 'Nissan',
         model: "Sentra",
         mileage: 243432,
         title: 'salvage',
         transmission: 'automatic'
     },
-    {
-        vin: '09989899',
+    {       
+        vin: 'JTDBF32K920050115',
         make: 'Nissan',
         model: "Altima",
         mileage: 33393,
         title: 'clean',
         
     },
-    {
-        vin: '77888777',
+    {       
+        vin: '5FNRL38209B014050',
         make: 'Nissan',
         model: "Maxima",
         mileage: 22000,
