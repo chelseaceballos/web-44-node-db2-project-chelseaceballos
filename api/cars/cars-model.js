@@ -1,10 +1,11 @@
-const getAll = () => {
-  //   getAll resolves to an array of car records (or an empty array)
+const db = require('../../data/db-config')
 
+const getAll = () => {
+return db('cars')
 }
 
-const getById = () => {
-  // getById resolves to a car record by the given id
+const getById = async (id) => {
+  
 }
 
 const create = () => {
@@ -12,3 +13,8 @@ const create = () => {
 }
 
 
+module.exports = {
+  getAll,
+  getById,
+  create,
+}
